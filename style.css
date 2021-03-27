@@ -38,14 +38,19 @@
 }
 
 #startStopButton {
-    padding: 1rem 1.5rem;
+    padding: 10px 10px;
     background-color: darkslategrey;
     border-radius: 5px;
     color: white;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 15px;
 }
 
 .tetrimino {
     background-color: #133939;
+}
+
+body {
+    margin-left: 100px;
+    margin-top: 100px;
 }
