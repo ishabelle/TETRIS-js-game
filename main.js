@@ -1,5 +1,5 @@
 window.onload = () => {
-    for (let i = 0; i < 200; i ++) {
+    for (let i = 0; i < 200; i++) {
         let tile = document.createElement('div')
         tile.setAttribute("class", "tile")
         document.querySelector(".gameGrid").appendChild(tile)
@@ -15,7 +15,7 @@ window.onload = () => {
     const lTetrimino = [
         [1, gridWidth + 1, gridWidth * 2 + 1, 2],
         [gridWidth, gridWidth + 1, gridWidth + 2, gridWidth * 2 + 2],
-        [gridWidth * 2, 1, gridWidth + 1, gridWidth * 2 +1],
+        [gridWidth * 2, 1, gridWidth + 1, gridWidth * 2 + 1],
         [gridWidth, gridWidth * 2, gridWidth * 2 + 1, gridWidth * 2 + 2]
     ]
 
@@ -40,11 +40,23 @@ window.onload = () => {
         [0, 1, gridWidth, gridWidth + 1]
     ]
 
-    const  iTetrimino = [
+    const iTetrimino = [
         [1, gridWidth + 1, gridWidth * 2 + 1, gridWidth * 3 + 1],
         [gridWidth, gridWidth + 1, gridWidth + 2, gridWidth + 3],
-        [1, gridWidth + 1, gridWidth * 2 + 1, gridWidth * 3 +1],
+        [1, gridWidth + 1, gridWidth * 2 + 1, gridWidth * 3 + 1],
         [gridWidth, gridWidth + 1, gridWidth + 2, gridWidth + 3]
     ]
+
+    const theTetriminos = [lTetrimino, sTetrimino, tTetrimino, oTetrimino, iTetrimino]
+
+    let currentPosition = 4
+    let currentBlock = theTetriminos[0][0]
+
+    const draw = () => {
+        currentBlock.forEach((el) => {
+            tiles[currentPosition + el].classList.add("tetrimino")
+        })
+    }
+    draw()
 }
 
