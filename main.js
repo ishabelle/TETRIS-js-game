@@ -1,14 +1,20 @@
 window.onload = () => {
     for (let i = 0; i < 200; i++) {
-        let tile = document.createElement('div')
+        let tile = document.createElement("div")
         tile.setAttribute("class", "tile")
+        document.querySelector(".gameGrid").appendChild(tile)
+    }
+
+    for (let i = 0; i < 10; i++) {
+        let tile = document.createElement("div")
+        tile.classList.add("taken")
         document.querySelector(".gameGrid").appendChild(tile)
     }
 
     const tileWidth = 20
     const tileHeight = 20
     const gridWidth = 10
-    let tiles = Array.from(document.querySelectorAll(".tile"))
+    let tiles = Array.from(document.querySelectorAll(".gameGrid div"))
     const scoreDisplay = document.querySelector("#scoreDisplay")
     const startButton = document.querySelector("#startStopButton")
 
@@ -71,13 +77,26 @@ window.onload = () => {
         undraw()
         currentPosition += gridWidth
         draw()
+        freeze()
+    }
+
+    const freeze = () => {
+        if (currentBlock.some(el => tiles[currentPosition + el + gridWidth].classList.contains('taken'))) {
+            currentBlock.forEach((el) => {
+                tiles[currentPosition + el].classList.add('taken')
+            })
+            randomTetrimino = Math.floor(Math.random() * theTetriminos.length)
+            currentBlock = theTetriminos[randomTetrimino][currentRotation]
+            currentPosition = 4
+            draw()
+        }
     }
 
 
-    // LOGIC GAME
+// LOGIC GAME
 
     draw()
-    let timerId = setInterval(moveDown, 1000)
+    let timerId = setInterval(moveDown, 100)
 
 }
 
