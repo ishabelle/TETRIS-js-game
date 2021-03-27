@@ -11,10 +11,20 @@ window.onload = () => {
         document.querySelector(".gameGrid").appendChild(tile)
     }
 
+    for (let i = 0; i < 16; i++) {
+        let tile = document.createElement("div")
+        tile.classList.add("nextTet")
+        document.querySelector(".upNext").appendChild(tile)
+    }
+
     const tileWidth = 20
     const tileHeight = 20
     const gridWidth = 10
+    const upNextGridWidth = 4
+
+    let nextRandom = 0
     let tiles = Array.from(document.querySelectorAll(".gameGrid div"))
+    let upNext = Array.from(document.querySelectorAll(".upNext div"))
     const scoreDisplay = document.querySelector("#scoreDisplay")
     const startButton = document.querySelector("#startStopButton")
 
@@ -35,7 +45,7 @@ window.onload = () => {
     const tTetrimino = [
         [1, gridWidth, gridWidth + 1, gridWidth + 2],
         [1, gridWidth + 1, gridWidth * 2 + 1, gridWidth + 2],
-        [gridWidth, gridWidth + 1, gridWidth + 2, 2],
+        [gridWidth, gridWidth + 1, gridWidth + 2, gridWidth * 2 + 1],
         [gridWidth, 1, gridWidth + 1, gridWidth * 2 + 1]
     ]
 
@@ -51,6 +61,14 @@ window.onload = () => {
         [gridWidth, gridWidth + 1, gridWidth + 2, gridWidth + 3],
         [1, gridWidth + 1, gridWidth * 2 + 1, gridWidth * 3 + 1],
         [gridWidth, gridWidth + 1, gridWidth + 2, gridWidth + 3]
+    ]
+
+    const upNextTetriminos = [
+        [1, upNextGridWidth + 1, upNextGridWidth * 2 + 1, 2],
+        [upNextGridWidth * 2, upNextGridWidth + 1, upNextGridWidth * 2 + 1, upNextGridWidth + 2],
+        [1, upNextGridWidth, upNextGridWidth + 1, upNextGridWidth + 2],
+        [0, 1, upNextGridWidth, upNextGridWidth + 1],
+        [1, upNextGridWidth + 1, upNextGridWidth * 2 + 1, upNextGridWidth * 3 + 1]
     ]
 
     const theTetriminos = [lTetrimino, sTetrimino, tTetrimino, oTetrimino, iTetrimino]
@@ -80,15 +98,26 @@ window.onload = () => {
         freeze()
     }
 
+    const upNextDisplay = () => {
+        upNext.forEach(el => {
+            el.classList.remove("tetrimino")
+        })
+        upNextTetriminos[nextRandom].forEach(el => {
+            upNext[el].classList.add("tetrimino")
+        })
+    }
+
     const freeze = () => {
         if (currentBlock.some(el => tiles[currentPosition + el + gridWidth].classList.contains('taken'))) {
             currentBlock.forEach((el) => {
                 tiles[currentPosition + el].classList.add('taken')
             })
-            randomTetrimino = Math.floor(Math.random() * theTetriminos.length)
+            randomTetrimino = nextRandom
+            nextRandom = Math.floor(Math.random() * theTetriminos.length)
             currentBlock = theTetriminos[randomTetrimino][currentRotation]
             currentPosition = 4
             draw()
+            upNextDisplay()
         }
     }
 
@@ -145,6 +174,7 @@ window.onload = () => {
 // LOGIC GAME
     document.addEventListener('keyup', control)
     draw()
+    upNextDisplay()
     let timerId = setInterval(moveDown, 500)
 
 }
