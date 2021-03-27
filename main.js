@@ -92,11 +92,22 @@ window.onload = () => {
         }
     }
 
+    const moveLeft = () => {
+        undraw()
+        const isAtLeftEdge = currentBlock.some(el => (currentPosition + el) % gridWidth === 0)
+        if (!isAtLeftEdge) {
+            currentPosition -= 1
+        }
+        if (currentBlock.some(el => tiles[currentPosition + el].classList.contains('taken'))) {
+            currentPosition += 1
+        }
+        draw()
+    }
 
 // LOGIC GAME
 
     draw()
-    let timerId = setInterval(moveDown, 100)
+    let timerId = setInterval(moveDown, 500)
 
 }
 
