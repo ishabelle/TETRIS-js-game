@@ -61,7 +61,12 @@ window.onload = () => {
         })
     }
 
+    const undraw = () => {
+        currentBlock.forEach((el) => {
+            tiles[currentPosition + el].classList.remove("tetrimino")
+        })
+    }
     draw()
-
+    undraw()
 }
 
