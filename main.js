@@ -19,8 +19,7 @@ window.onload = () => {
 
     let timerId
     let score = 0
-    const tileWidth = 20
-    const tileHeight = 20
+
     const gridWidth = 10
     const upNextGridWidth = 4
 
@@ -210,10 +209,6 @@ window.onload = () => {
             document.removeEventListener('keyup', control)
             alert("GAME OVER")
         }
-        // clearInterval(timerId)
-        // document.removeEventListener("keyup", control)
-        // timerId = null
-        // document.querySelector(".endTextGame").setAttribute("style", "visibility: visible")
     }
 
 
@@ -233,32 +228,4 @@ window.onload = () => {
 
     })
 }
-
-
-// // LOGIC GAME
-//     document.querySelector(".endGameText").setAttribute("style", "visibility: hidden")
-//     startButton.addEventListener('click', (e) => {
-//         if (timerId) {
-//             clearInterval(timerId)
-//             document.removeEventListener('keyup', control)
-//             timerId = null
-//         } else {
-//             tiles.forEach((el, i) => {
-//                 if (i < 199) {
-//                     el.classList.remove("tetrimino")
-//                     el.classList.remove("taken")
-//                     el.style.backgroundColor = ""
-//                 }
-//             })
-//             score = 0
-//             document.querySelector(".endGameText").setAttribute("style", "visibility: vi")
-//             document.addEventListener('keyup', control)
-//             draw()
-//             timerId = setInterval(moveDown, 500)
-//             nextRandom = Math.floor(Math.random() * theTetriminos.length)
-//             upNextDisplay()
-//         }
-//     })
-// }
-
 
