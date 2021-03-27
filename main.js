@@ -131,6 +131,7 @@ window.onload = () => {
         }
     }
 
+
     const moveLeft = () => {
         undraw()
         const isAtLeftEdge = currentBlock.some(el => (currentPosition + el) % gridWidth === 0)
@@ -149,7 +150,8 @@ window.onload = () => {
         if (!isAtRightEdge) {
             currentPosition += 1
         }
-        if (currentPosition.some(el => tiles[currentPosition + el].classList.contains('taken'))) {
+
+        if (currentBlock.some(el => tiles[currentPosition + el].classList.contains('taken'))) {
             currentPosition -= 1
         }
         draw()
@@ -199,13 +201,19 @@ window.onload = () => {
                 })
             }
         }
+    }
 
-        const gameOver = () => {
-            if (currentBlock.some(el => tiles[currentPosition + el].classList.contains("taken"))) {
-                scoreDisplay.innerHTML = 'end'
-                clearInterval(timerId)
-            }
+    const gameOver = () => {
+        if (currentBlock.some(el => tiles[currentPosition + el].classList.contains("taken"))) {
+            scoreDisplay.innerHTML = "END"
+            clearInterval(timerId)
+            document.removeEventListener('keyup', control)
+            alert("GAME OVER")
         }
+        // clearInterval(timerId)
+        // document.removeEventListener("keyup", control)
+        // timerId = null
+        // document.querySelector(".endTextGame").setAttribute("style", "visibility: visible")
     }
 
 
@@ -225,4 +233,32 @@ window.onload = () => {
 
     })
 }
+
+
+// // LOGIC GAME
+//     document.querySelector(".endGameText").setAttribute("style", "visibility: hidden")
+//     startButton.addEventListener('click', (e) => {
+//         if (timerId) {
+//             clearInterval(timerId)
+//             document.removeEventListener('keyup', control)
+//             timerId = null
+//         } else {
+//             tiles.forEach((el, i) => {
+//                 if (i < 199) {
+//                     el.classList.remove("tetrimino")
+//                     el.classList.remove("taken")
+//                     el.style.backgroundColor = ""
+//                 }
+//             })
+//             score = 0
+//             document.querySelector(".endGameText").setAttribute("style", "visibility: vi")
+//             document.addEventListener('keyup', control)
+//             draw()
+//             timerId = setInterval(moveDown, 500)
+//             nextRandom = Math.floor(Math.random() * theTetriminos.length)
+//             upNextDisplay()
+//         }
+//     })
+// }
+
 
