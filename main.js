@@ -18,6 +18,7 @@ window.onload = () => {
     }
 
     let timerId
+    let score = 0
     const tileWidth = 20
     const tileHeight = 20
     const gridWidth = 10
@@ -105,9 +106,11 @@ window.onload = () => {
     const upNextDisplay = () => {
         upNext.forEach(el => {
             el.classList.remove("tetrimino")
+            el.style.backgroundColor = ""
         })
         upNextTetriminos[nextRandom].forEach(el => {
             upNext[el].classList.add("tetrimino")
+            upNext[el].style.backgroundColor = colors[nextRandom]
         })
     }
 
@@ -122,6 +125,9 @@ window.onload = () => {
             currentPosition = 4
             draw()
             upNextDisplay()
+            addScore()
+            gameOver()
+
         }
     }
 
@@ -171,6 +177,34 @@ window.onload = () => {
         }
         if (e.keyCode === 40) {
             moveDown()
+        }
+    }
+
+    const addScore = () => {
+        for (let i = 0; i < 199; i += gridWidth) {
+            const row = [i, i + 1, i + 2, i + 3, i + 4, i + 5, i + 6, i + 7, i + 8, i + 9]
+
+            if (row.every(el => tiles[el].classList.contains("taken"))) {
+                score += 10
+                scoreDisplay.innerHTML = score
+                row.forEach(el => {
+                    tiles[el].classList.remove("taken")
+                    tiles[el].classList.remove("tetrimino")
+                    tiles[el].style.backgroundColor = ""
+                })
+                const squaresRemoved = tiles.splice(i, gridWidth)
+                tiles = squaresRemoved.concat(tiles)
+                tiles.forEach(tile => {
+                    document.querySelector(".gameGrid").appendChild(tile)
+                })
+            }
+        }
+
+        const gameOver = () => {
+            if (currentBlock.some(el => tiles[currentPosition + el].classList.contains("taken"))) {
+                scoreDisplay.innerHTML = 'end'
+                clearInterval(timerId)
+            }
         }
     }
 
