@@ -50,13 +50,18 @@ window.onload = () => {
     const theTetriminos = [lTetrimino, sTetrimino, tTetrimino, oTetrimino, iTetrimino]
 
     let currentPosition = 4
-    let currentBlock = theTetriminos[0][0]
+    let currentRotation = 0
+
+    let randomTetrimino = Math.floor(Math.random() * theTetriminos.length)
+    let currentBlock = theTetriminos[randomTetrimino][currentRotation]
 
     const draw = () => {
         currentBlock.forEach((el) => {
             tiles[currentPosition + el].classList.add("tetrimino")
         })
     }
+
     draw()
+
 }
 
