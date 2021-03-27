@@ -17,6 +17,7 @@ window.onload = () => {
         document.querySelector(".upNext").appendChild(tile)
     }
 
+    let timerId
     const tileWidth = 20
     const tileHeight = 20
     const gridWidth = 10
@@ -172,10 +173,19 @@ window.onload = () => {
 
 
 // LOGIC GAME
-    document.addEventListener('keyup', control)
-    draw()
-    upNextDisplay()
-    let timerId = setInterval(moveDown, 500)
+    startButton.addEventListener('click', (e) => {
+        if (timerId) {
+            clearInterval(timerId)
+            document.removeEventListener('keyup', control)
+            timerId = null
+        } else {
+            document.addEventListener('keyup', control)
+            draw()
+            timerId = setInterval(moveDown, 500)
+            nextRandom = Math.floor(Math.random() * theTetriminos.length)
+            upNextDisplay()
+        }
 
+    })
 }
 
