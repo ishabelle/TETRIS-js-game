@@ -1,7 +1,7 @@
 .gameGrid {
     width: 200px;
     height: 400px;
-    background-color: bisque;
+    background-color: lightgrey;
     display: flex;
     display: -webkit-flex;
     flex-wrap: wrap;
@@ -10,7 +10,6 @@
 .tile {
     width: 18px;
     height: 18px;
-    background-color: gray;
     border: 1px solid black;
 }
 
