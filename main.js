@@ -104,8 +104,15 @@ window.onload = () => {
         draw()
     }
 
-// LOGIC GAME
+    const control = (e) => {
+        if (e.keyCode === 37) {
+            moveLeft()
+        }
+    }
 
+
+// LOGIC GAME
+    document.addEventListener('keyup', control)
     draw()
     let timerId = setInterval(moveDown, 500)
 
