@@ -104,9 +104,27 @@ window.onload = () => {
         draw()
     }
 
+    const moveRight = () => {
+        undraw()
+        const isAtRightEdge = currentBlock.some(el => (currentPosition + el) % gridWidth === gridWidth - 1)
+        if (!isAtRightEdge) {
+            currentPosition += 1
+        }
+        if (currentPosition.some(el => tiles[currentPosition + el].classList.contains('taken'))) {
+            currentPosition -= 1
+        }
+        draw()
+    }
+
     const control = (e) => {
         if (e.keyCode === 37) {
             moveLeft()
+        }
+        if (e.keyCode === 39) {
+            moveRight()
+        }
+        if (e.keyCode === 40) {
+            moveDown()
         }
     }
 
