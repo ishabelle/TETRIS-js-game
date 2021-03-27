@@ -66,7 +66,18 @@ window.onload = () => {
             tiles[currentPosition + el].classList.remove("tetrimino")
         })
     }
+
+    const moveDown = () => {
+        undraw()
+        currentPosition += gridWidth
+        draw()
+    }
+
+
+    // LOGIC GAME
+
     draw()
-    undraw()
+    let timerId = setInterval(moveDown, 1000)
+
 }
 
