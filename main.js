@@ -116,9 +116,22 @@ window.onload = () => {
         draw()
     }
 
+    const rotate = () => {
+        undraw()
+        currentRotation++
+        if (currentRotation === currentBlock.length) {
+            currentRotation = 0
+        }
+        currentBlock = theTetriminos[randomTetrimino][currentRotation]
+        draw()
+    }
+
     const control = (e) => {
         if (e.keyCode === 37) {
             moveLeft()
+        }
+        if (e.keyCode === 38) {
+            rotate()
         }
         if (e.keyCode === 39) {
             moveRight()
