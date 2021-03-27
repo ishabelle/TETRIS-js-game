@@ -1,7 +1,7 @@
 .gameGrid {
     width: 200px;
     height: 400px;
-    background-color: lightgrey;
+    background-color: #b8b5b0;
     display: flex;
     display: -webkit-flex;
     flex-wrap: wrap;
@@ -10,7 +10,7 @@
 .tile {
     width: 18px;
     height: 18px;
-    border: 1px solid black;
+    border: 1px solid lightgrey;
 }
 
 .upNext {
@@ -19,13 +19,13 @@
     display: flex;
     display: -webkit-flex;
     flex-wrap: wrap;
-    background-color: darkslategrey;
+    background-color: #5b6d6d;
 }
 
 .nextTet {
     width: 18px;
     height: 18px;
-    border: 1px solid black;
+    border: 1px solid lightgrey;
 }
 
 #gameScreen {
@@ -47,5 +47,5 @@
 }
 
 .tetrimino {
-    background-color: darkred;
+    background-color: #133939;
 }

@@ -73,6 +73,7 @@ window.onload = () => {
     ]
 
     const theTetriminos = [lTetrimino, sTetrimino, tTetrimino, oTetrimino, iTetrimino]
+    const colors = ["#87dd9f", "#97ebdb", "#00c2c7", "#0086ad", "#005582"]
 
     let currentPosition = 4
     let currentRotation = 0
@@ -83,12 +84,14 @@ window.onload = () => {
     const draw = () => {
         currentBlock.forEach((el) => {
             tiles[currentPosition + el].classList.add("tetrimino")
+            tiles[currentPosition + el].style.backgroundColor = colors[randomTetrimino]
         })
     }
 
     const undraw = () => {
         currentBlock.forEach((el) => {
             tiles[currentPosition + el].classList.remove("tetrimino")
+            tiles[currentPosition + el].style.backgroundColor = ""
         })
     }
 
