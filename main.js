@@ -73,7 +73,7 @@ window.onload = () => {
     ]
 
     const theTetriminos = [lTetrimino, sTetrimino, tTetrimino, oTetrimino, iTetrimino]
-    const colors = ["#87dd9f", "#97ebdb", "#00c2c7", "#0086ad", "#005582"]
+    const colors = ["#58B1BA", "#DAF7F8", "#3B77AF", "#5AB6DB", "#A1E9F2"]
 
     let currentPosition = 4
     let currentRotation = 0
