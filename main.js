@@ -204,7 +204,7 @@ window.onload = () => {
 
     const gameOver = () => {
         if (currentBlock.some(el => tiles[currentPosition + el].classList.contains("taken"))) {
-            scoreDisplay.innerHTML = "END"
+            scoreDisplay.innerHTML = "GAME OVER"
             clearInterval(timerId)
             document.removeEventListener('keyup', control)
             alert("GAME OVER")
