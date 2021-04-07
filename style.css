@@ -15,6 +15,7 @@ html {
     width: 18px;
     height: 18px;
     border: 1px solid #a09d99;
+    float: right;
 
 }
 
@@ -24,7 +25,8 @@ html {
     display: flex;
     display: -webkit-flex;
     flex-wrap: wrap;
-    background-color:  #b8b5b0;
+    background-color: #b8b5b0;
+    float: right;
 }
 
 .nextTet {
@@ -39,7 +41,9 @@ html {
 }
 
 .gameInfo {
-    margin-left: 20px;
+    margin-left: 30px;
+    text-align: right;
+    float: right;
 
 }
 
@@ -67,4 +71,6 @@ body {
     margin-top: 80px;
 }
 
-
+.controls {
+    float: bottom;
+}
