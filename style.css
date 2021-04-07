@@ -1,3 +1,7 @@
+html {
+    font-family: Arial Narrow, sans-serif;
+}
+
 .gameGrid {
     width: 200px;
     height: 400px;
@@ -20,13 +24,13 @@
     display: flex;
     display: -webkit-flex;
     flex-wrap: wrap;
-    background-color: #026196;
+    background-color:  #b8b5b0;
 }
 
 .nextTet {
     width: 18px;
     height: 18px;
-    border: 1px solid lightgrey;
+    border: 1px solid #a09d99;
 }
 
 #gameScreen {
@@ -36,16 +40,22 @@
 
 .gameInfo {
     margin-left: 20px;
+
 }
 
 #startStopButton {
     padding: 10px 10px;
     background-color: #059092;
     border-radius: 5px;
-    /*border-color: #059092;*/
     color: white;
     font-weight: 700;
     font-size: 15px;
+
+}
+
+#startStopButton:hover {
+    background-color: #026196;
+    cursor: pointer;
 }
 
 .tetrimino {
@@ -56,3 +66,5 @@ body {
     margin-left: 80px;
     margin-top: 80px;
 }
+
+
