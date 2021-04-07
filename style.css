@@ -10,7 +10,8 @@
 .tile {
     width: 18px;
     height: 18px;
-    border: 1px solid lightgrey;
+    border: 1px solid #a09d99;
+
 }
 
 .upNext {
@@ -19,7 +20,7 @@
     display: flex;
     display: -webkit-flex;
     flex-wrap: wrap;
-    background-color: #5b6d6d;
+    background-color: #026196;
 }
 
 .nextTet {
@@ -39,8 +40,9 @@
 
 #startStopButton {
     padding: 10px 10px;
-    background-color: darkslategrey;
+    background-color: #059092;
     border-radius: 5px;
+    /*border-color: #059092;*/
     color: white;
     font-weight: 700;
     font-size: 15px;
@@ -51,6 +53,6 @@
 }
 
 body {
-    margin-left: 100px;
-    margin-top: 100px;
+    margin-left: 80px;
+    margin-top: 80px;
 }
